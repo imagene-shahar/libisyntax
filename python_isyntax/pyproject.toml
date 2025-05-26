@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-isyntax"
+version = "0.1.0"
+description = "Pythonic wrapper around libisyntax"
+authors = [{name = "Imagene", email = "info@example.com"}]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+
+[project.optional-dependencies]
+test = ["pytest", "Pillow"]
+
+[tool.setuptools]
+package-dir = {"" = "python_isyntax"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["python_isyntax"]
+
+[tool.setuptools.package-data]
+python_isyntax = ["*.so", "*.dll", "*.dylib"]

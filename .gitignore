@@ -10,3 +10,4 @@ build/
 *.isyntax
 *.json
 *.xml
+__pycache__/
