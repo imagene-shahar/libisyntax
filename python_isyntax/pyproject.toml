@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-isyntax"
+version = "0.1.0"
+description = "Pythonic wrapper around libisyntax"
+authors = [{name = "Imagene", email = "info@example.com"}]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+
+[project.optional-dependencies]
+test = ["pytest", "Pillow"]
