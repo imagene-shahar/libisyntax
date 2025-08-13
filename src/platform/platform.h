@@ -166,8 +166,19 @@ void init_thread_memory(i32 logical_thread_index, system_info_t* system_info);
 #undef extern
 #endif
 
+// Forward declare globals used below
+extern system_info_t global_system_info;
 extern THREAD_LOCAL thread_memory_t* local_thread_memory;
-static inline temp_memory_t begin_temp_memory_on_local_thread() { return begin_temp_memory(&local_thread_memory->temp_arena); }
+static inline temp_memory_t begin_temp_memory_on_local_thread() {
+	// Ensure thread-local arena is initialized for threads not created by libisyntax
+	if (!local_thread_memory) {
+		if (global_system_info.os_page_size == 0) {
+			get_system_info(false);
+		}
+		init_thread_memory(0, &global_system_info);
+	}
+	return begin_temp_memory(&local_thread_memory->temp_arena);
+}
 
 extern int g_argc;
 extern const char** g_argv;
