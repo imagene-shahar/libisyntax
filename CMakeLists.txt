@@ -28,7 +28,7 @@ if(IS_APPLE_SILICON)
     # Enable NEON for ARM-based Apple Silicon
     add_compile_options(-march=armv8.2-a+fp16+simd)
 else()
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ")
 endif()
 
 
